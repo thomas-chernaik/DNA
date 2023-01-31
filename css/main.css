@@ -274,7 +274,7 @@ textarea {
 }
 
 #image-preview {
-  max-width: 50%; /* maximum width is 50% of the screen */
+  max-width: 75%; /* maximum width is 50% of the screen */
   z-index: -100;
 }
 .rot{
@@ -311,6 +311,7 @@ textarea {
   width: 3px;
   background: #ff00ff;
   margin-left: 20px;
+  z-index: 2;
 }
 #rotater{
   width: 50%;
@@ -324,6 +325,17 @@ textarea {
   filter: invert(100%);
 }
 
+.caption
+{
+  position: relative;
+  top: 30px;
+  left: -140px;
+  transform:rotate(-90deg);
+  z-index: 1;
+  background-color: black;
+  color: white;
+  height: 20px;
+}
 
 
 
