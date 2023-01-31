@@ -2,6 +2,10 @@
 <html class="no-js" lang="">
 
 <head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
   <meta charset="utf-8">
   <title></title>
   <meta name="description" content="">
@@ -25,7 +29,22 @@
 <body>
 
   <!-- Add your site or application content here -->
-  <p>Hello world!</p>
+  <input type="file" id="input-image">
+
+
+<div class="container">
+      <div class="bar">
+          <div class="button-container">
+            <button class="button" onclick="deleteColumn()">-</button>
+            <button class="button" onclick="addNewColumn()">+</button>
+
+          </div>
+      </div>
+    <img id="image-preview">
+    <div class="rot">Rotation: <span id="rotationNum" class="rot"></span></div>
+    <input type="range" min="-90" max="90" step="0.5" class="slider" id="rotater">
+
+</div>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>

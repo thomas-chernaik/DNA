@@ -260,4 +260,70 @@ textarea {
     page-break-after: avoid;
   }
 }
+.bar {
+  width: 100%; /* width of the bar is 100% of the container */
+  height: 100px; /* height of the bar */
+  background-color: #000; /* color of the bar */
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 80vh; /* 80% of the viewport height */
+  position: relative; /* this is needed for the bar to be positioned above the image */
+}
+
+#image-preview {
+  max-width: 50%; /* maximum width is 50% of the screen */
+  z-index: -100;
+}
+.rot{
+  color: black;
+	font-size: 30px;
+	-webkit-text-stroke: 1px white;
+}
+.bar {
+  position: absolute; /* make sure the buttons are positioned relative to the bar */
+  top: 0;
+}
+
+.button-container {
+  position: relative  ; /* position the container of the buttons absolutely */
+  left: 0; /* align the container to the left of the bar */
+  top: 0; /* align the container to the top of the bar */
+  height: 100px
+}
+
+.button {
+  /* style the buttons as desired */
+  height: 100px;
+  width: 100px;
+  margin-left: 5px;
+
+
+}
+
+
+.vbar {
+  position: relative;
+  display: inline-block;
+  height: 100px;
+  width: 3px;
+  background: #ff00ff;
+  margin-left: 20px;
+}
+#rotater{
+  width: 50%;
+}
+#grid{
+  position: absolute;
+
+  left:0;
+  max-width: 100%;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
+
+
 
