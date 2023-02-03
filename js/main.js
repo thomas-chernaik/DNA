@@ -18,6 +18,39 @@ $(document).ready(function() {
 });
 let totalColumns = 0;
 let columnNumber = 0;
+
+function addNewBand()
+{
+  $(".container").append('<div class="band"></div>');
+  //to make our bars snap to our columns we will make them draggable, and then move to the nearest column on mouse up
+$(".band").draggable();
+$(".band").mouseup(function(){
+  //generate list of columns
+  let myxValue = $(this).position().left;
+  if(myxValue > screen.width - 30)
+  {
+    $(this).remove();
+  }
+  let xValue = myxValue;
+  let minDist = 1000;
+  console.log(Object.keys(captions));
+  for(let i=0; i<Object.keys(captions).length; i++)
+  {
+    var dist = Math.abs(myxValue - $("#" + Object.keys(captions)[i]).position().left);
+    if (dist < minDist)
+    {
+      minDist = dist;
+      xValue = $("#" + Object.keys(captions)[i]).position().left;
+    }
+
+  }
+  console.log(xValue);
+  //snap to column
+  $(this).css({"position" : "absoulte", "left" : xValue -10})
+});
+
+}
+
 function addNewColumn()
 {
   //store the name in columnName and number in columnNumber
@@ -50,6 +83,7 @@ function deleteColumn()
   }
   });
   $("#"+captions["vbar" + columnNumber]).remove();
+  delete captions["vbar" + columnNumber];
 }
 
 var slider = document.getElementById("rotater");
@@ -76,24 +110,32 @@ $("#rotater").mouseup(function() {
 function addNewCaption(childDivID)
 {
   var captionID = "caption"+ childDivID;
-  $("#"+childDivID).prepend('<textarea class="caption" id="'+ captionID + '">');
+  $("#"+childDivID).prepend('<textarea class="caption" cols = "10"id="'+ captionID + '">');
   captions[childDivID] = captionID;
 }
 var hidden = false;
+
+
 function hider()
 {
+  var elementsToHide = [".bar", ".button", "#image-preview", ".rot", "#rotater", ".vbar"];
   if(hidden)
   {
     hidden = false;
-    $(".bar, .button, #image-preview, .rot, #rotater").css({opacity : 1});
-    $("#hider").text("Hide Things");
+        $(".bar, .button, #image-preview, .rot, #rotater").css({"background-color" : "rgba(200,200,200,1)"});
+
+      $("#hider").text("Hide Things");
+      $("#image-preview").css({"opacity": 1});
   }
   else
   {
     hidden = true;
-    $(".bar, .button, #image-preview, .rot, #rotater").css({opacity : 0});
+    $(".bar, .button, #image-preview, .rot, #rotater").css({"background-color" : "rgba(1,1,1,0)"});
+    $("#image-preview").css({"opacity": 0});
     $("#hider").text("Show Things");
 
 
   }
 }
+
+

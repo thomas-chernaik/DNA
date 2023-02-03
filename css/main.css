@@ -328,14 +328,28 @@ textarea {
 .caption
 {
   position: relative;
-  top: 30px;
-  left: -140px;
-  transform:rotate(-90deg);
+  top: 10px;
+  left: -80px;
+  transform:rotate(-60deg);
   z-index: 1;
   background-color: black;
   color: white;
   height: 20px;
 }
+.band
+{
+  position: absolute;
+  height: 10px;
+  width: 30px;
+  z-index: 10;
+  color: black;
+  background-color: peachpuff;
+  font-size: 10px;
+}
 
 
-
+.bandNumber
+{
+  position: absolute;
+  font-size: 3px;
+}
