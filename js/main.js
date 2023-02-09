@@ -22,6 +22,7 @@ let columnNumber = 0;
 function addNewBand()
 {
   $(".container").append('<div class="band"></div>');
+  $(".bandNumber").prop("disabled", true);
   //to make our bars snap to our columns we will make them draggable, and then move to the nearest column on mouse up
 $(".band").draggable();
 $(".band").mouseup(function(){
@@ -137,5 +138,30 @@ function hider()
 
   }
 }
-
+var bandMode = "Display";
+function switchBandMode() {
+  if (bandMode == "Display") {
+    bandMode = "Input";
+    $(".band").each(function () {
+      //get the current value of the band
+      var currentValue = $(this).text();
+      //generate the input field to add
+      var inputField = "<input size=\"1\" value=\"" + currentValue + "\">";
+      //delete the current child
+      $(this).html("");
+      //add the input field
+      $(this).append(inputField);
+    });
+  } else {
+    bandMode = "Display";
+    $(".band").each(function () {
+      //get the value from the input field
+      var currentValue = $(this).children("input").eq(0).val();
+      //delete the child
+      $(this).children("input").eq(0).remove();
+      //set the new number
+      $(this).append(currentValue);
+    });
+  }
+}
 
