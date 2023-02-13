@@ -47,7 +47,7 @@ $(".band").mouseup(function(){
   }
   console.log(xValue);
   //snap to column
-  $(this).css({"position" : "absoulte", "left" : xValue -10})
+  $(this).css({"position" : "absoulte", "left" : xValue -15})
 });
 
 }
@@ -59,7 +59,12 @@ function addNewColumn()
   columnNumber++;
   columnName = "vbar" + columnNumber;
   //create the column
-  $(".button-container").append("<div class='vbar' id='" + columnName + "'></div>");
+  $(".button-container").append("<div class='vbar' id='" + columnName + "'>    <img class='draganddrop' src=\"img/left-right.jpeg\"></div>");
+  $('.vbar').hover(function() {
+  $(this).append('<div id="long""></div>');
+}, function() {
+  $('#long').remove();
+});
   //add the caption
   addNewCaption(columnName);
   $(document).ready(function() {
@@ -72,6 +77,8 @@ function addNewColumn()
 });
 });
 }
+
+
 function deleteColumn()
 {
   $(document).ready(function () {
@@ -141,6 +148,7 @@ function hider()
 var bandMode = "Display";
 function switchBandMode() {
   if (bandMode == "Display") {
+    $("#bandMode").text("Drag Bands");
     bandMode = "Input";
     $(".band").each(function () {
       //get the current value of the band
@@ -154,6 +162,7 @@ function switchBandMode() {
     });
   } else {
     bandMode = "Display";
+    $("#bandMode").text("Input Band Numbers");
     $(".band").each(function () {
       //get the value from the input field
       var currentValue = $(this).children("input").eq(0).val();
@@ -165,3 +174,4 @@ function switchBandMode() {
   }
 }
 
+//make bands expand on hover
